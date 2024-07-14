@@ -10,9 +10,9 @@ Made with Vue, Express.js, MongoDB.
 
 Checklist:
 - [x] in app viewer
-- [] better ui 2.0
-- [] search function
-- [] filter function
+- [ ] better ui 2.0
+- [ ] search function
+- [ ] filter function
 
 Backend data update services are hosted on own device.
 MongoDB is in a Docker Container.

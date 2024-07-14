@@ -35,7 +35,7 @@ onMounted(() => {
 
 <template>
   
-    <div v-if="isLoaded" class="w-screen flex flex-wrap justify-center p-4 gap-2">
+    <div v-if="isLoaded" class="flex flex-wrap justify-center p-4 gap-2">
         <div v-for="video in data" :key="video.id">
             <LiveVideoItem :data=video />
         </div>

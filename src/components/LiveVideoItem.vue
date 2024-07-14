@@ -48,6 +48,7 @@ onMounted(() => {
       <div class="flex flex-col w-80">
         <router-link class="relative w-full h-full" :to="`/watch/${data.video_id}`">
           <img :src="data.thumbnails.medium" class="w-full rounded-md object-cover">
+          <div class="bg-black bg-opacity-80 px-1 text-white rounded-md absolute top-2 left-2" v-if="data.isMember">Members Only</div>  
           <div class="bg-red-800 px-1 text-white rounded-md absolute bottom-2 right-2"> {{timeDiff }}</div>
           <img/>
         </router-link>
@@ -61,7 +62,11 @@ onMounted(() => {
         <div class="pl-2">
           <div class="line-clamp-2 w-full">{{ data.title }}</div>
             <div>
-              <router-link class="text-pink-600 text-sm hover:bg-" :to="`/channel/${data.channel_id}`">{{ data.channel_title }}</router-link>
+              <router-link class="text-green-600 text-sm hover:bg-" :to="`/channel/${data.channel_id}`">{{ data.channel_title }}</router-link>
+              <div class="flex flex-row">
+                <div class="text-red-500">Live Now</div>
+                <div class="pl-1">• {{data.stream_details.concurrent_viewers}} Viewers</div>              
+              </div>
             </div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 <script setup>
-import VideoLook from './VideoLook.vue';
 import { ref, nextTick, onMounted } from 'vue';
 import axios from 'axios';
+import UpcomingVideoItem from './UpcomingVideoItem.vue';
 
 const data = ref(null)
 const isLoaded = ref(false)
@@ -31,9 +31,9 @@ onMounted(() => {
 </script>
 
 <template>
-    <div v-if="isLoaded" class="w-screen flex flex-wrap justify-center p-4">
+    <div v-if="isLoaded" class="flex flex-wrap justify-center p-4">
         <div v-for="video in data" :key="video.id">
-            <VideoLook :data=video />
+            <UpcomingVideoItem :data=video />
         </div>
     </div>
 </template>

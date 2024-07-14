@@ -66,16 +66,11 @@ onMounted(async () => {
 </script>
 
 <template >
-  <div v-if="!showItems">
-    <div class="w-screen h-screen flex justify-center items-center">
-      <div class="animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-green-500"></div>
-    </div>
-  </div>
-
-  <div v-if="showItems">
-    <div class="aspect-w-6 aspect-h-2">
-        <iframe class="w-4/5" :src="`https://www.youtube.com/embed/${videoId}?vq=hd1080`" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    </div>
+  <div class="relative w-[99vw]">
+      <div class="aspect-w-6 h-[75vh]">
+          <iframe class="w-4/5 " :src="`https://www.youtube.com/embed/${videoId}?vq=hd1080`" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <iframe v-if="data.video_type=='video/live'" class="absolute top-0 right-0 w-1/5 h-[90vh]" height="640" :src="`https://www.youtube.com/live_chat?v=${videoId}&embed_domain=localhost:3000`" ></iframe>
     <div class="p-4 divide-y w-4/5">
       <div>
         <h1 class="text-2xl text-white font-light py-2">{{ data.title }}</h1>
@@ -87,6 +82,8 @@ onMounted(async () => {
         <p v-if="readMore" class="text-sm text-gray-500" v-html="formattedDesc.slice(200)"></p>
     <button @click="readMore = !readMore" class="text-blue-500">Read {{ readMore ? 'less' : 'more' }}</button>
       </div>
+    </div>
+    <div class="relative">
     </div>
   </div>
 </template>

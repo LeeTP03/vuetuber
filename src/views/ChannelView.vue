@@ -5,6 +5,7 @@ import axios from 'axios';
 import ChannelVideoItem from '@/components/ChannelVideoItem.vue';
 import ChannelHeader from '@/components/ChannelHeader.vue';
 import ChannelDescription from '@/components/ChannelDescription.vue';
+import ButtonRow from '@/components/ButtonRow.vue';
 
 let video_data = ref({})
 const isLoaded = ref(false)
@@ -45,7 +46,8 @@ onMounted(() => {
       </div>
       <div v-if="isLoaded && route.name=='ChannelDescription'" class="w-screen flex flex-wrap gap-2 justify-center">
         <ChannelDescription />
-      </div> 
+      </div>
+      <ButtonRow />
     </div>
 
 </template>

@@ -22,5 +22,5 @@ Checklist:
 Backend data update services are hosted on own device.
 MongoDB is in a Docker Container.
 
-This is a fan project made in free time just for fun!
+This is a solo fan project made in free time just for fun!
 Massive inspiration from [Holodex](https://www.holodex.net) check them out!

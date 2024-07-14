@@ -14,5 +14,13 @@ Checklist:
 - [ ] search function
 - [ ] filter function
 
+- Adding more channels
+  - [ ] VSPO
+  - [ ] Nijisanji
+
+
 Backend data update services are hosted on own device.
 MongoDB is in a Docker Container.
+
+This is a fan project made in free time just for fun!
+Massive inspiration from [Holodex](www.holodex.net) check them out!

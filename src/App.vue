@@ -1,14 +1,12 @@
 <script setup>
-import PageHeader from './components/PageHeader.vue';
+import PageHeader from "./components/PageHeader.vue";
 </script>
 
 <template>
-  <div class="h-screen w-screen">
-    <div class="relative h-16 w-full">
-      <div class="absolute inset-x-0 top-0 h-16"><PageHeader /></div>
-    </div>
-    <div>
+  <div class="min-h-screen w-screen bg-gray-900 text-gray-100">
+    <PageHeader />
+    <main class="w-full">
       <router-view></router-view>
-    </div>
+    </main>
   </div>
 </template>

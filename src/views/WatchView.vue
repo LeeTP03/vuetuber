@@ -65,27 +65,55 @@ onMounted(async () => {
 )
 </script>
 
-<template >
-  <div v-if="!showItems">
-    <div class="w-screen h-screen flex justify-center items-center">
-      <div class="animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-green-500"></div>
+<template>
+  <div v-if="!showItems" class="w-screen h-screen flex justify-center items-center bg-gray-900">
+    <div class="flex flex-col items-center gap-4">
+      <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-red-600"></div>
+      <p class="text-gray-400">Loading video...</p>
     </div>
   </div>
 
-  <div v-if="showItems">
-    <div class="aspect-w-6 aspect-h-2">
-        <iframe class="w-4/5" :src="`https://www.youtube.com/embed/${videoId}?vq=hd1080`" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    </div>
-    <div class="p-4 divide-y w-4/5">
-      <div>
-        <h1 class="text-2xl text-white font-light py-2">{{ data.title }}</h1>
-        <p v-if="data.video_type == 'video/live'">Streaming for {{ timeDiff }}</p>
+  <div v-if="showItems" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="w-full mb-6">
+      <div class="relative w-full aspect-video bg-gray-800 rounded-xl overflow-hidden shadow-2xl">
+        <iframe 
+          class="w-full h-full" 
+          :src="`https://www.youtube.com/embed/${videoId}?vq=hd1080`" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          allowfullscreen
+        ></iframe>
       </div>
+    </div>
+    
+    <div class="space-y-6">
       <div>
-        <p class="text-sm text-gray-400 py-2" v-html="formattedDesc.slice(0,200)">
-        </p>
-        <p v-if="readMore" class="text-sm text-gray-500" v-html="formattedDesc.slice(200)"></p>
-    <button @click="readMore = !readMore" class="text-blue-500">Read {{ readMore ? 'less' : 'more' }}</button>
+        <h1 class="text-2xl sm:text-3xl font-bold text-white mb-3 leading-tight">
+          {{ data.title }}
+        </h1>
+        <div v-if="data.video_type === 'video/live'" class="flex items-center gap-2">
+          <div class="flex items-center gap-2 bg-red-600 px-3 py-1 rounded-full">
+            <div class="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+            <span class="text-sm font-semibold text-white">LIVE</span>
+          </div>
+          <span class="text-sm text-gray-400">Streaming for {{ timeDiff }}</span>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 pt-6">
+        <div class="prose prose-invert max-w-none">
+          <p 
+            class="text-sm sm:text-base text-gray-300 leading-relaxed whitespace-pre-wrap"
+            v-html="readMore ? formattedDesc : formattedDesc.slice(0, 200)"
+          ></p>
+          <button 
+            v-if="formattedDesc.length > 200"
+            @click="readMore = !readMore" 
+            class="mt-3 text-red-500 hover:text-red-400 font-medium transition-colors duration-200"
+          >
+            {{ readMore ? "Read less" : "Read more" }}
+          </button>
+        </div>
       </div>
     </div>
   </div>
